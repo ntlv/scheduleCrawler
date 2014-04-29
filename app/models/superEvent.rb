@@ -16,7 +16,7 @@ class SuperEvent
         end
     end
     
-    def obtainFreeTime
+    def obtainSortedFreeTimes
         freeTime = []
         if @container != nil then
             if @container[0].strftime("%H") != "08" then
@@ -32,10 +32,12 @@ class SuperEvent
                 end
             end
         end
+        freeTime.sort! {|a,b| a <=> b}
+        
         freeTime
     end
     
     def to_s
-        "SuperEvent { " + @location.to_s + " at " + @container.to_s + " }"
+        "SuperEvent {\n" + "\t" + @location.to_s + "\n at \n\t" + @container.to_s + "/n}"
     end
 end

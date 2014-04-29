@@ -81,7 +81,7 @@ class Krawler
             
             p = get_csv(houseNumber)
             
-            puts p
+            #puts p
             
             p1 = p.gsub('"', '')
             csv = CSV.parse(p1)
@@ -99,9 +99,9 @@ class Krawler
                 
                 
                 superEvents.each do |sE|
-                    freeTimes = sE.obtainFreeTime
+                    puts sE
+                    freeTimes = sE.obtainSortedFreeTimes
                     if freeTimes.length > 0 then
-                        
                         outputArray <<  $/*2 + sE.location.to_s
                         outputArray << "-" * 20
                         freeTimes.each_slice(2) do |s, e|
