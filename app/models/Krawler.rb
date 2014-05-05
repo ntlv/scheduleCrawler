@@ -77,18 +77,13 @@ class Krawler
             
             houseNumber = buildUrl(@@urlprefix, @@urlsuffix, houseRoomCollection.values)
             
-            #puts "fetching csv from " + houseNumber
-            
             p = get_csv(houseNumber)
-            
-            #puts p
             
             p1 = p.gsub('"', '')
             csv = CSV.parse(p1)
             
             #0, 1, 2, 3 tider
             # 8 lokal
-            
             
             busyTimes = parse_csv(csv)
             
@@ -99,7 +94,6 @@ class Krawler
                 
                 
                 superEvents.each do |sE|
-                    puts sE
                     freeTimes = sE.obtainSortedFreeTimes
                     if freeTimes.length > 0 then
                         outputArray <<  $/*2 + sE.location.to_s
